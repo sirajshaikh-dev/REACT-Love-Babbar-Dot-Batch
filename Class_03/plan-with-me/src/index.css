@@ -11,28 +11,33 @@ body{
     height: 100vh;
 }
 
-.container{
+.container {
     display: flex;
+    flex-direction: column; /* Adjusting to column for vertical alignment */
+    align-items: center;    /* Centering horizontally */
     justify-content: center;
-    flex-flow: row wrap;
+    text-align: center;     /* Center the text inside container */
+    padding: 20px;          /* Add some padding for spacing */
+    max-width: 100%;        /* Ensure container takes full width */
 }
 
-.title{
+.title {
     border: 7px dashed #0111a0;
     border-radius: 20px;
     font-size: 3rem;
-    margin: 6vh;
+    margin: 2rem 0;         /* Reduce margin for better control */
     padding: 1vh 5vw;
+    display: inline-block;  /* Ensure title takes only the required space */
 }
 
-.cards{
+.cards {
     display: flex;
-    /* align-items: center; */
     justify-content: center;
     flex-flow: row wrap;
     max-width: 1300px;
     margin: 0 auto;
 }
+
 
 .card{
     width: 400px;
