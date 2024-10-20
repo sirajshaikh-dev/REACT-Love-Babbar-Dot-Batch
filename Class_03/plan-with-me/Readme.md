@@ -1,7 +1,7 @@
 ## Tours App
 
-<img src="./public/Screenshot%202024-10-20%20122636.png" alt="screenshot" width="250" height="150">
-<img src="./public/Screenshot%202024-10-20%20122858.png" alt="screenshot" width="250" height="150">
+<img src="./public/Screenshot%202024-10-20%20122636.png" alt="screenshot"  >
+<img src="./public/Screenshot%202024-10-20%20122858.png" alt="screenshot" >
 
 
 **Introduction**
