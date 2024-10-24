@@ -8,17 +8,34 @@ function Card(props) {
   let setLikedCourses= props.setLikedCourses;
 
   function clickHandler( ) {
-    
+    if(likedCourses.includes(course.id)){
+      //pehle se like hua pada he yo unlike krva do
+      setLikedCourses((prev)=> prev.filter((cid)=>cid !== course.id))
+      toast.warning('liked removed')
+    } else{
+      //pehle se like nhi he to like krva do
+      if (likedCourses.length===0) {
+        setLikedCourses([course.id])
+      } else{
+        setLikedCourses((prev)=>[...prev,course.id])
+      }
+      toast.success("liked successfully")
+    }
   }
 
   return (
     <div className='bg-bgDark bg-opacity-80 w-[300px] rounded-md overflow-hidden'>
       <div className='relative '>
-      <img src={props.course.image.url} alt={props.course.image.alt}/>
+      <img src={course.image.url} alt={course.image.alt}/>
 
         <div className='rounded-full w-[40px] h-[40px] bg-white absolute right-2 bottom-[-12px] grid place-items-center'>
           <button onClick={clickHandler}>
-            <FcLike fontSize="1.75rem"/>
+            {
+              likedCourses.includes(course.id)
+              ? (<FcLike fontSize="1.75rem"/>)
+              :(<FcLikePlaceholder fontSize="1.75rem"/>)
+              
+            }
           </button>
         </div>
       </div>
