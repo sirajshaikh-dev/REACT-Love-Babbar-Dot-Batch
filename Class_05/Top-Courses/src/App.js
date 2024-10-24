@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 const App = () => {
   const [courses, setcourses] = useState(null) /*Can initialise with [] to avoid error */
   const [loading, setLoading] = useState(true)
+  const [category, setCategory] = useState(filterData[0].title)
 
   const fetchData = async  () => {
     setLoading(true)
@@ -34,11 +35,15 @@ return (
     </div>
     <div className="bg-bgDark2">
     <div>
-      <Filter filterData={filterData}/>
+      <Filter 
+      filterData={filterData}
+      category={category}
+      setCategory={setCategory}
+      />
     </div>
     <div  className="w-11/12 max-w-[1200px] min-h-[50vh] mx-auto flex flex-wrap justify-center items-center">
       {
-        loading ? <Spinner/> : <Cards courses={courses}/>
+        loading ? <Spinner/> : <Cards courses={courses} category={category}/>
       }
     </div>
     </div>

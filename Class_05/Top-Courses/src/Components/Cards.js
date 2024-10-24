@@ -4,16 +4,23 @@ import { useState } from 'react'
 
 function Cards(props) {
   let courses = props.courses
+  let category= props.category;
   const [likedCourses, setLikedCourses] = useState([])
 
   function getCourses() {
+    if (category=== "All") {
       let allCourses=[];
       Object.values(courses).forEach((array)=>(
         array.forEach((courseData)=>(
           allCourses.push(courseData)
         ))
       ))
-      return allCourses;
+      return allCourses;  
+    }
+    else{
+      // sirf specific category ka array pass hoga
+      return courses[category];  
+    }  
   }
 
   return (
