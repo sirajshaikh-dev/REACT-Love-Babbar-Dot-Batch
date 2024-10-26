@@ -1,5 +1,5 @@
 import React from 'react'
-// import {FaQuoteLeft, FaQuoteRight} from "react-icons/fa";
+import {FaQuoteLeft, FaQuoteRight} from "react-icons/fa";
 
 const Card = ({review}) => {
   return (
@@ -20,13 +20,13 @@ const Card = ({review}) => {
         </div>
 
         <div className="text-violet-400 mx-auto mt-5">
-                {/* <FaQuoteLeft /> */} 
+                <FaQuoteLeft /> 
             </div>
 
             <div className="text-center mt-4 text-slate-500 ">{review.text}</div>
 
             <div className="text-violet-400 mx-auto mt-5">
-                {/* <FaQuoteRight /> */}
+                <FaQuoteRight />
             </div>
         
     </div>
