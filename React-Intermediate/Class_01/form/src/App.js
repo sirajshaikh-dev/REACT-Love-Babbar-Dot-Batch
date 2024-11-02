@@ -1,35 +1,41 @@
 import './App.css';
-import useState from 'react'
+import { useState } from "react";
+
 function App() {
-  const [firstname, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('')
-
-  console.log(firstname);
-  console.log(lastName);
   
-  function changeFirstNameHandler(e) {
-    // console.log('printing first name');
-    // console.log(e.target.value);
-    setFirstName(e.target.value)
+const [formData,setFormData]=useState({
+  firstName:"",
+  lastName:"",
+  email:"",
+});
+    console.log(formData.email);
+  function changeHandler(e) {
+    setFormData((prevData)=>{
+      return{
+        ...prevData,
+        [e.target.name]:e.target.value
+      }
+    })
   }
 
-  function changeLastNameHandler(e) {
-    // console.log('printing last name');
-    // console.log(e.target.value);
-    setLastName(e.target.value)
-  }
   return (
-     <div className='app'> 
-      <form>
+     <div > 
+      <form style={{display:'flex',flexDirection:'column', justifyContent:'center', alignItems:'center', height:'50vh', borderRadius:'2px solid black'}}>
           <input type='text' 
-          placeholder='name'
-          onChange={changeFirstNameHandler}
-          />
+          placeholder='firstName'
+          name='firstName'
+          onChange={changeHandler}
+          /> 
           <input type='text' 
           placeholder='lastName'
-          onChange={changeLastNameHandler}
+          name='lastName'
+          onChange={changeHandler}
           />
-          
+          <input type='email' 
+          placeholder='Email'
+          name='email'
+          onChange={changeHandler}
+          />
       </form>
      </div>
   );
