@@ -7,8 +7,16 @@ const [formData,setFormData]=useState({
   firstName:"",
   lastName:"",
   email:"",
+  comments:"",
+  isVisible:true,
 });
-    console.log(formData.email);
+
+// console.log(`firstName: ${formData.firstName}`);
+// console.log(`lastName: ${formData.lastName}`);
+// console.log(`email: ${formData.email}`);
+
+console.log(formData);
+
   function changeHandler(e) {
     setFormData((prevData)=>{
       return{
@@ -25,17 +33,35 @@ const [formData,setFormData]=useState({
           placeholder='firstName'
           name='firstName'
           onChange={changeHandler}
+          value={formData.firstName}
           /> 
           <input type='text' 
           placeholder='lastName'
           name='lastName'
           onChange={changeHandler}
+          value={formData.lastName}
           />
           <input type='email' 
           placeholder='Email'
           name='email'
           onChange={changeHandler}
+          value={formData.email}
           />
+          <textarea
+          placeholder='Enter Your comments here'
+          name='comments'
+          onChange={changeHandler}
+          value={formData.comments}
+          /> 
+          <br></br>
+          <br></br>
+          <input
+          type='checkbox'
+          onChange={changeHandler}
+          name='isVisible'
+          id='isVisible'
+          />
+          <label htmlFor='isVisible'>on/off</label>
       </form>
      </div>
   );
