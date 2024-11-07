@@ -21,9 +21,10 @@ function App() {
   })
 
   function changeHandler(event) {
-    setFormData({
-      ...formData,
-      [event.target.name]:event.target.value,
+    const {name,value,checked, type}=event.target
+    setFormData((prevData)=>{
+      return{...prevData,
+        [name]: type=== 'checkbox' ? checked : value}
     })
   }
 
@@ -42,6 +43,7 @@ function App() {
           placeholder='Shaikh'
           id='firstname' 
           name='firstname'
+          value={formData.firstname}
           onChange={changeHandler}
           />
         </label>  <br />
@@ -52,6 +54,7 @@ function App() {
           placeholder='Siraj'
           id='lastname' 
           name='lastname'
+          value={formData.lastname}
           onChange={changeHandler}
           />
         </label> <br />
@@ -62,12 +65,17 @@ function App() {
           placeholder='joe@123'
           id='email' 
           name='email'
+          value={formData.email}
           onChange={changeHandler}
           />
         </label> <br /> 
 
         <label htmlFor='country'>Country:  <span/>
-          <select id='country' name='country'  onChange={changeHandler}> 
+          <select 
+          id='country' 
+          name='country'  
+          value={formData.country}
+          onChange={changeHandler}> 
             <option value='india'>India</option>
             <option value='USA'>USA</option>
             <option value='Canada'>Canada</option>
@@ -79,6 +87,7 @@ function App() {
           name="address" id="address"
           rows="2" cols="30"
           placeholder='123,pan gate'
+          value={formData.address}
           onChange={changeHandler}
           ></textarea>
         </label> <br /> 
@@ -88,6 +97,7 @@ function App() {
           name='city'
           id='city'
           placeholder='Surat'
+          value={formData.city}
           onChange={changeHandler}
           />
 
@@ -98,6 +108,7 @@ function App() {
           id='state'
           name='state'
           placeholder='Gujarat'
+          value={formData.state}
           onChange={changeHandler}
           />
         </label> <br />
@@ -106,6 +117,7 @@ function App() {
           id='zip'
           name='zip'
           placeholder='654658'
+          value={formData.zip}
           onChange={changeHandler}
           />
         </label> <br />
@@ -114,24 +126,24 @@ function App() {
           <legend> By email:</legend>
           <input type='checkbox'
             id='comments'
-            value='comments'
             name='comments'
+            value={formData.comments}
             onChange={changeHandler}
             />
           <label htmlFor='comments'>Comments </label>
 
           <input type='checkbox'
             id='candidates'
-            value='candidates'
             name='candidates'
+            value={formData.candidates}
             onChange={changeHandler}
             />
           <label htmlFor='candidates'>Candidates </label>
 
           <input type='checkbox'
             id='offers'
-            value='offers'
             name='offers'
+            value={formData.offers}
             onChange={changeHandler}
             />
           <label htmlFor='offers'>Offers </label>
@@ -142,7 +154,7 @@ function App() {
           <input type='radio' 
           id='everything'
           name='notification'
-          value='everything'
+          value={formData.notification}
           onChange={changeHandler}
           />
           <label htmlFor='everything'>Everything</label>
@@ -150,7 +162,7 @@ function App() {
           <input type='radio' 
           id='sameemail'
           name='notification'
-          value='sameemail'
+          value='Everything'
           onChange={changeHandler}
           />
           <label htmlFor='sameemail'>Same as Email</label>
