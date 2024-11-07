@@ -31,6 +31,7 @@ function App() {
   function submitHandler( e) {
     e.preventDefault()
     console.log(formData);
+    alert(formData)
   }
    
 
