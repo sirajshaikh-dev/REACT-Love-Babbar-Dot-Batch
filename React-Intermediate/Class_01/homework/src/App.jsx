@@ -7,14 +7,14 @@ function App() {
     firstname: "",
     lastname:'',
     email: '',
-    country: '',
+    country: 'India',
     address: '',
     city : '',
     state: '',
     zip: '',
-    comments:'',
-    candidates: '',
-    offers: '',
+    comments: false,
+    candidates: false,
+    offers: false,
     notification: '',
 
 
@@ -131,6 +131,7 @@ function App() {
             onChange={changeHandler}
             />
           <label htmlFor='comments'>Comments </label>
+          <p>Get notified when someone post a comment</p>
 
           <input type='checkbox'
             id='candidates'
@@ -139,6 +140,7 @@ function App() {
             onChange={changeHandler}
             />
           <label htmlFor='candidates'>Candidates </label>
+           <p>Get notified when candidate apply for job</p>
 
           <input type='checkbox'
             id='offers'
@@ -147,10 +149,12 @@ function App() {
             onChange={changeHandler}
             />
           <label htmlFor='offers'>Offers </label>
+          <p>Get notified when candidate accept or reject offer</p>
         </fieldset>
         
         <fieldset>
           <legend>Push Notification</legend>
+          <p>These are delieverd via SMS to your mobile</p>
           <input type='radio' 
           id='everything'
           name='notification'
