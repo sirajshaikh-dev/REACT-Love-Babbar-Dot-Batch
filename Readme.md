@@ -10,3 +10,9 @@
 ## REACT Intermediate
 
 [Class 01- FORM](./React-Intermediate/Class_01/form/README.md)
+
+[Class 01- HomeWork](./React-Intermediate/Class_01/homework/README.md)
+
+[Class 01- Form: Core Javascript](./React-Intermediate/Class_01/form_coreJS/)
+
+[Class 01- Custom Form](./React-Intermediate/Class_01/Custom_form/README.md)
