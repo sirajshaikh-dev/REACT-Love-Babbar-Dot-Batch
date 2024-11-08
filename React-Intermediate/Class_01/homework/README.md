@@ -1,8 +1,29 @@
-# React + Vite
+# Homework 
+<img src='./src/assets/Screenshot 2024-11-06 112018.png' />
+<img src='./src/assets/Screenshot 2024-11-07 190329.png' />
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img src='./src/assets/Screenshot 2024-11-07 190559.png' />
+<img src='./src/assets/Screenshot 2024-11-07 191017.png' />
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Important Concepts
+
+### Handling all State Object
+
+```jsx
+ function changeHandler(event) {
+    const {name,value,checked, type}=event.target
+    setFormData((prevData)=>{
+      return{...prevData,
+        [name]: type=== 'checkbox' ? checked : value}
+    })
+  }
+```
+### Dealing with Boolean values
+```jsx
+const [formData, setFormData] = useState({
+    comments: false,
+    candidates: false,
+    offers: false,
+})
+```
