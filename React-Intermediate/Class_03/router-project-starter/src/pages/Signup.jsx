@@ -1,9 +1,17 @@
-// import Template from "../components/Auth/Template";
-// import signupImg from "../assets/signup.png";
+import Template from "../Components/Template";
+import signupImg from "../assets/signup.png";
 
-function Signup({   }) {
+function Signup({setIsLoggedIn}) {
   return (
-     <div>Signup</div>
+    <Template
+    title=' Join millions learning code with studynotion for'
+    desc1='Build skills for today, tomorrow and beyond'
+    desc2='Education to future-proof your career'
+    image={signupImg}
+    formtype='signup'
+    setIsLoggedIn={setIsLoggedIn}
+    
+    />
   );
 }
 

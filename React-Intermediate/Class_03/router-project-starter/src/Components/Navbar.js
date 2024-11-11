@@ -6,13 +6,13 @@ import toast from 'react-hot-toast';
 function Navbar({isLoggedIn,setIsLoggedIn}) {
 
   return (
-    <div className='flex space-x-12'>
+    <div className='flex justify-evenly items-center'>
       <Link to='/'>
        <img src={logo} alt='logo' width={160} height={32} loading='lazy'/>
       </Link>
 
       <nav>
-        <ul className='flex gap-3'>
+        <ul className='flex ml-5 mr-3 gap-3'>
           <li>
             <Link to='/' >Home</Link>
           </li>
@@ -35,16 +35,16 @@ function Navbar({isLoggedIn,setIsLoggedIn}) {
         {
           !isLoggedIn &&
           <Link to='/signup'>
-            <button onClick={()=>{
-              setIsLoggedIn(false);
-              toast.success('Logged out')
-            }}>Signup</button>
+            <button >Signup</button>
           </Link>
         }
         {
           isLoggedIn &&
           <Link to='/'>
-            <button>Logout</button>
+            <button onClick={()=>{
+              setIsLoggedIn(false);
+              toast.success('Logged out')
+            }}>Logout</button>
           </Link>
         }
         {
