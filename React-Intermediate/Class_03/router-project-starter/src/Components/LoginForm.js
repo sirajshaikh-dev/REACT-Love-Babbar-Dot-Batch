@@ -37,9 +37,15 @@ const LoginForm = ({setIsLoggedIn}) => {
     }
 
   return (
-    <form onSubmit={submitHandler}>
-        <label>
-            <p>Emaill Address: <span>*</span></p>
+    <form onSubmit={submitHandler}
+    className="flex flex-col w-full gap-y-4 mt-6"
+    >
+        <label className="w-full">
+            <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]"
+            >Emaill Address: 
+            <sup className="text-pink-200">*</sup>
+            </p>
+
             <input 
             required
             type='email'
@@ -47,11 +53,15 @@ const LoginForm = ({setIsLoggedIn}) => {
             name='email'
             placeholder='Enter Email Id'
             onChange={changeHandler}
+            className="bg-richblack-800 rounded-[0.75rem] w-full p-[12px] text-richblack-5"
             />
         </label>
 
-        <label>
-            <p>Password <span>*</span></p>
+        <label className="w-full relative">
+            <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]"
+            >Password 
+                <sup className="text-pink-200">*</sup>
+            </p>
             <input 
             required
             type= {showPassword ? "text" : "password" }
@@ -59,20 +69,22 @@ const LoginForm = ({setIsLoggedIn}) => {
             name='password'
             placeholder='Enter Password'
             onChange={changeHandler}
+            className="bg-richblack-800 rounded-[0.75rem] w-full p-[12px] text-richblack-5"
             />
-            <span onClick={()=>setShowPassword((prev)=>!prev)}>
-                {
+            <span onClick={()=>setShowPassword((prev)=>!prev)}
+            className="absolute right-3 top-[38px] cursor-pointer text-white"
+            >   {
                    showPassword ? (<AiOutlineEye />):(<AiOutlineEyeInvisible/>) 
                 }
             </span>
 
             <Link to='#'>
-                <p>
+                <p  className="text-xs mt-1 text-blue-100 max-w-max ml-auto">
                     Forgot Password
                 </p>
             </Link>
         </label>
-        <button>
+        <button className="bg-yellow-50 py-[8px] px-[12px] rounded-[8px] mt-6 font-medium text-richblack-900">
             Sign In
         </button>
     </form>
