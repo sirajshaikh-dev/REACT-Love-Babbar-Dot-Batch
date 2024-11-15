@@ -1,57 +1,20 @@
 import  React,{ useEffect, useState } from "react"
 import axios from 'axios'
 import Spinner from "./Spinner";
+import useGif from "../hooks/useGif";
 
 // const API_KEY = process.env.REACT_APP_GIPHY_API_KEY;
-const API_KEY = 'VzTxCNb5aaeQxI5w99ViL3G2TKGqTpVj'
+// const API_KEY = 'VzTxCNb5aaeQxI5w99ViL3G2TKGqTpVj'
 // const API_KEY_2=process.env.REACT_APP_GIPHY_API_KEY_2;
-const API_KEY_2='3K8SsG1tGi80HvrAU3Y8gKxoRYov6Snd'
+// const API_KEY_2='3K8SsG1tGi80HvrAU3Y8gKxoRYov6Snd'
 
 // let curApiKey= API_KEY;
 
 export default function Random() {
   
-  const [apiKey, setApiKey] = useState(API_KEY);
-  const [gif, setgif] = useState('');
-  const [loading, setloading] = useState(true)
+  const {gif,loading,fetchData}=useGif();
 
-  async function fetchData( ) {
-
-    try {
-    setloading(true)
-    const url = `https://api.giphy.com/v1/gifs/random?api_key=${apiKey}`
-    const {data} = await axios.get(url)   //hold only data object not entire response
-    // console.log(data);
-
-    const imageSource= data.data.images.downsized_large.url
-    // if don't want to destructure {data} then
-    // const imageSource = data.data.data.images.downsized_large.url;
-    // console.log(imageSource);
-    setgif(imageSource)
-    } 
-      catch (error) 
-      {
-      if (error.response && error.response.status === 429) {
-        console.error('Rate Limit Exceed, Retrying in 5 secnod');
-        // curApiKey = curApiKey ? API_KEY : API_KEY_2
-        setApiKey(apiKey === API_KEY ? API_KEY_2 : API_KEY);
-        // setTimeout(fetchData, 5000);
-      }else{
-        console.error("An error occured:", error.message);
-      }
-    }
-      finally{
-        setloading(false)
-      }
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, [apiKey])
-  
-  function clickHandler( ) {
-    fetchData()
-   }
+ 
 
   return( 
       <div className="w-1/2  bg-green-500 rounded-lg border border-black 
@@ -65,7 +28,7 @@ export default function Random() {
           loading ? (<Spinner/>) :(<img src={gif}   width='400' />)
         }
         {/* <img src={gif}   width='400' /> */}
-        <button onClick={clickHandler}
+        <button onClick={()=>fetchData()}
         className="w-10/12 bg-yellow-400 text-lg py-2 rounded-lg mb-[20px]"
         >
           Generate
