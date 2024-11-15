@@ -2,13 +2,16 @@ import  React,{ useEffect, useState } from "react"
 import axios from 'axios'
 import Spinner from "./Spinner";
 
-const API_KEY = process.env.REACT_APP_GIPHY_API_KEY;
-const API_KEY_2=process.env.REACT_APP_GIPHY_API_KEY_2;
+// const API_KEY = process.env.REACT_APP_GIPHY_API_KEY;
+const API_KEY = 'VzTxCNb5aaeQxI5w99ViL3G2TKGqTpVj'
+// const API_KEY_2=process.env.REACT_APP_GIPHY_API_KEY_2;
+const API_KEY_2='3K8SsG1tGi80HvrAU3Y8gKxoRYov6Snd'
 
-let curApiKey= API_KEY;
+// let curApiKey= API_KEY;
 
 export default function Random() {
-
+  
+  const [apiKey, setApiKey] = useState(API_KEY);
   const [gif, setgif] = useState('');
   const [loading, setloading] = useState(true)
 
@@ -16,7 +19,7 @@ export default function Random() {
 
     try {
     setloading(true)
-    const url = `https://api.giphy.com/v1/gifs/random?api_key=${curApiKey}`
+    const url = `https://api.giphy.com/v1/gifs/random?api_key=${apiKey}`
     const {data} = await axios.get(url)   //hold only data object not entire response
     // console.log(data);
 
@@ -30,7 +33,8 @@ export default function Random() {
       {
       if (error.response && error.response.status === 429) {
         console.error('Rate Limit Exceed, Retrying in 5 secnod');
-        curApiKey = curApiKey ? API_KEY : API_KEY_2
+        // curApiKey = curApiKey ? API_KEY : API_KEY_2
+        setApiKey(apiKey === API_KEY ? API_KEY_2 : API_KEY);
         // setTimeout(fetchData, 5000);
       }else{
         console.error("An error occured:", error.message);
@@ -43,7 +47,7 @@ export default function Random() {
 
   useEffect(() => {
     fetchData();
-  }, [])
+  }, [apiKey])
   
   function clickHandler( ) {
     fetchData()
