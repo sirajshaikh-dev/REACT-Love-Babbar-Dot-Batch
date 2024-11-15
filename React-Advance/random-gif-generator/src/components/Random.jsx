@@ -7,28 +7,42 @@ const API_KEY = process.env.REACT_APP_GIPHY_API_KEY;
 export default function Random() {
 
   const [gif, setgif] = useState('');
-  const [loading, setloading] = useState(false)
+  const [loading, setloading] = useState(true)
 
   async function fetchData( ) {
-    // setloading(true)
+
+    try {
+    setloading(true)
 
     const url = `https://api.giphy.com/v1/gifs/random?api_key=${API_KEY}`
-    const {data} = await axios.get(url)
+    const {data} = await axios.get(url)   //hold only data object not entire response
     // console.log(data);
     const imageSource= data.data.images.downsized_large.url
+
+    // if don't want to destructure {data} then
+    // const imageSource = data.data.data.images.downsized_large.url;
     // console.log(imageSource);
     setgif(imageSource)
+    } catch (error) {
+      if (error.response && error.response.status === 429) {
+        alert('Rate Limit Exceed, Retrying in 5 secnod');
+        // setTimeout(fetchData, 5000);
+      }else{
+        console.error("An error occured:", error.message);
+      }
+    }
+      finally{
+        setloading(false)
+      }
+  }
 
-    // setloading(false)
-  }  
-  
   useEffect(() => {
     fetchData();
   }, [])
   
   function clickHandler( ) {
     fetchData()
-  }
+   }
 
   return( 
       <div className="w-1/2  bg-green-500 rounded-lg border border-black 
@@ -38,10 +52,10 @@ export default function Random() {
           A Random Gif
         </h1>
 
-        {/* {
-          loading ? (<Spinner/>) :()
-        } */}
-        <img src={gif}   width='400' />
+        {
+          loading ? (<Spinner/>) :(<img src={gif}   width='400' />)
+        }
+        {/* <img src={gif}   width='400' /> */}
         <button onClick={clickHandler}
         className="w-10/12 bg-yellow-400 text-lg py-2 rounded-lg mb-[20px]"
         >
