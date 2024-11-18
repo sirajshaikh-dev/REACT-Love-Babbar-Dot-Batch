@@ -16,8 +16,8 @@ function Blogs() {
               <p>No data Found</p>  
             </div>)
           :(posts.map((post)=> (
-            <div>
-              <p className='font-bold'>{post.title}</p>
+            <div key={post.id}> 
+              <p className='text-amber-700'>{post.title}</p>
               <p>
                 By <span>{post.author}</span> on <span>{post.category}</span>
               </p>
@@ -25,8 +25,8 @@ function Blogs() {
 
               <div>
                 {
-                  post.tags.map((tag)=> (
-                    <span>{`#${tag}`}</span>
+                  post.tags.map((tag,index)=> (
+                    <span key={index}>{`#${tag}`}</span>
                   ))
                 }
               </div>
