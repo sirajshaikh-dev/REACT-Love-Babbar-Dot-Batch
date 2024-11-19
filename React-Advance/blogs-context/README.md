@@ -1,3 +1,10 @@
- [Source code](./)
+ # Blog Website
+
+ - ## [Source code](./)
+ - ## [Live](https://siraj-blogsite.netlify.app/)
  
- ![](./public/Screenshot%202024-11-19%20121022.png)
+## Screenshots
+
+<img src="./public/Screenshot 2024-11-19 135154.png">
+<img src="./public/Screenshot 2024-11-19 121022.png">
+<img src="./public/Screenshot 2024-11-19 135205.png">
