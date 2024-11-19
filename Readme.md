@@ -19,8 +19,10 @@
 
 [Class 02- React Router](./React-Intermediate/Class_02/react-router/README.md)
 
-[Class 03- Studynotion clone](./React-Intermediate/Class_03/router-project-starter/README.md)
+[Class 03- Studynotion clone- React Router](./React-Intermediate/Class_03/router-project-starter/README.md)
 
 ## REACT ADVANCE
 
-[Class 01-Random gif Generator](./React-Advance/random-gif-generator/README.md)
+[Class 01-Random gif Generator - Custom Hooks](./React-Advance/random-gif-generator/README.md)
+
+[Class 02- Blog Website - Context API](./React-Advance/blogs-context/README.md/)
