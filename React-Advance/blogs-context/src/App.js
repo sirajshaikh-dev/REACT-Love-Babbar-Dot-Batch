@@ -3,7 +3,7 @@ import Blogs from './Components/Blogs';
 import Header from './Components/Header'
 import Pagination from './Components/Pagination'
 import { AppContext } from './Context/AppContext';
-
+import {Route, Routes} from "react-router-dom"
 export default function App() {
 
   // const {fetchBlogPosts}=useContext(AppContext)
@@ -12,10 +12,11 @@ export default function App() {
   // }, [])
   
   return (
-    <div className='w-full h-full flex flex-col gap-y-1 justify-center items-center'>
-    <Header/>
-    <Blogs/>
-    <Pagination/>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home/>} />
+      <Route path="/blog/:blogId" element={<BlogPage/>} />
+      <Route path="/tags/:tag" element={<TagPage/>} />
+      <Route path="/categories/:category" element={<CategoryPage/>} />
+    </Routes>
   );
 }
