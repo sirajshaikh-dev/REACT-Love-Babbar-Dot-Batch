@@ -1,15 +1,33 @@
 import { useContext,useEffect } from 'react';
-import Blogs from './Components/Blogs';
-import Header from './Components/Header'
-import Pagination from './Components/Pagination'
 import { AppContext } from './Context/AppContext';
-import {Route, Routes} from "react-router-dom"
+import {Route, Routes, useLocation, useSearchParams} from "react-router-dom"
+import Home from './Pages/Home';
+import BlogPage from './Pages/BlogPage'
+import CategoryPage from './Pages/CategoryPage'
+import TagPage from './Pages/TagPage'
+
 export default function App() {
 
-  // const {fetchBlogPosts}=useContext(AppContext)
-  // useEffect(() => {
-  //   fetchBlogPosts();
-  // }, [])
+  const {fetchBlogPosts}=useContext(AppContext)
+  const[searchParams,setSearchParams]= useSearchParams()
+  const location= useLocation()
+   
+  useEffect(() => {
+    const page= searchParams.get("page")?? 1;
+    if (location.pathname.includes("tags")) { //iska matlab tagwala page show krna he
+      // https://example.com/tags/software-dev
+      const tag=location.pathname.split("/").at(-1).replaceAll("-"," ")
+      // /tags/software-dev becomes ["", "tags", "software dev"].
+      fetchBlogPosts(Number(page),tag)
+    } 
+    else if (location.pathname.includes("categories")) {
+      const category= location.pathname.split('/').at(-1).replaceAll("-"," ")
+      fetchBlogPosts(Number(page),null,category)
+    }
+    else{
+      fetchBlogPosts(Number(page));
+    }
+  }, [location.pathname,location.search])
   
   return (
     <Routes>

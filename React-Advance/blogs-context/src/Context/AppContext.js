@@ -35,10 +35,9 @@ export function AppContextProvider({children}) {
             }
         setLoading(false)
     }
-
-        useEffect(() => {
-            fetchBlogPosts();
-        }, [])
+        // useEffect(() => {
+        //     fetchBlogPosts();
+        // }, [])
      
     function handlePageChange(page) {
         setPage(page)
