@@ -1,15 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { AppContext } from "../context/AppContext";
-import Header from "../components/Header";
-import BlogDetails from "../components/BlogDetails";
+import { AppContext } from "../Context/AppContext";
+import Header from "../Components/Header";
+import BlogDetails from "../Components/BlogDetails";
 import { baseUrl } from "../baseUrl";
 
 const BlogPage = () => {
   const [blog, setBlog] = useState(null);
   const [relatedblog, setRelatedblog] = useState([]);
   const location = useLocation();
-  const navigation = useNavigate();
+  const navigate = useNavigate();
   const { loading, setLoading } = useContext(AppContext);
   const blogId = location.pathname.split("/").at(-1);
   const newBaseUrl = "https://codehelp-apis.vercel.app/api/";
@@ -40,7 +40,7 @@ const BlogPage = () => {
     <div>
       <Header />
       <div>
-        <button onClick={() => navigation(-1)}>Back</button>
+        <button onClick={() => navigate(-1)}>Back</button>
       </div>
       <div>
         {loading ? (

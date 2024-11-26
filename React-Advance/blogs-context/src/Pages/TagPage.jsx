@@ -1,12 +1,12 @@
 import React from 'react'
 import Header from '../Components/Header'
-import { useLocation, useNavigation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Blogs from '../Components/Blogs';
 import Pagination from '../Components/Pagination';
 
 function TagPage() {
-  const navigate= useNavigation()
-  const location =useLocation;
+  const navigate= useNavigate()
+  const location =useLocation();
   const tag= location.pathname.split("/").at(-1)
   return (
     <div>
