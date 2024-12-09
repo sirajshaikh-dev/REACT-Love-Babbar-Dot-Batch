@@ -5,6 +5,7 @@ import CartItem from "../components/CartItem";
 
 const Cart = () => {
   const {cart}= useSelector((state)=>state)
+  console.log(cart)
   const [totalAmount, setTotalAmount] = useState(0)
 
 
@@ -37,7 +38,7 @@ const Cart = () => {
             </div>
 
             <div>
-              <p>Total Amount: {totalAmount}</p>
+              <p>Total Amount: ${totalAmount}</p>
               <button>Checout Now</button>
             </div>
           </div>
