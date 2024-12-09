@@ -6,16 +6,16 @@ const Navbar = () => {
   const {cart}= useSelector((state)=>state)
 
   return (
-  <div className="bg-slate-600">
-    <div className="flex flex-row justify-between">
+  <div  >
+    <nav className="flex justify-between items-center h-20 max-w-6xl mx-auto ">
         <NavLink to="/">
-          <div>
+          <div className="ml-5"> 
             <img className="h-14"
             src="../logo.png" alt="img" />
           </div>
         </NavLink>
         
-      <div>
+      <div className="flex items-center font-medium text-slate-100 mr-5 space-x-6">
         <NavLink to="/">
           <p>Home</p>
         </NavLink>
@@ -23,12 +23,41 @@ const Navbar = () => {
         <NavLink to="/cart"  >
             <FaShoppingCart   />
             { 
+              cart.length > 0 && 
               <span>{cart.length}</span>
             }
           </NavLink>
       </div>
-    </div>
+    </nav>
   </div>)
 };
 
 export default Navbar;
+
+
+/*
+//Showing count as badge on cart :  "THE HARD WAY"
+{
+  (() => {
+  if (cart.length > 0) {
+    return (
+      <span>{cart.length}</span>
+    );
+  }
+  return null;
+  })()
+} */
+/* 
+//THE "EASY HARD"
+let cartBadge = null;
+if (cart.length > 0) {
+  cartBadge = (
+    <span>{cart.length}</span>
+  );
+}
+
+<NavLink to="/cart" >
+  <FaShoppingCart />
+  {cartBadge}
+</NavLink>;
+ */
