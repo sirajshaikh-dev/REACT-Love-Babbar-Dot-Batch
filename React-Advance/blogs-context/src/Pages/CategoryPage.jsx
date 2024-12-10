@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../Components/Header'
 import { useLocation, useNavigate } from 'react-router-dom'
-import BlogPage from './BlogPage'
+import Blogs from '../Components/Blogs'
 import Pagination from '../Components/Pagination'
 
 function CategoryPage() {
@@ -10,11 +10,13 @@ function CategoryPage() {
   const category  = location.pathname.split("/").at(-1)
 
   return (
-    <div>
+    <div className="mt-[100px]">
       <Header/>
-      <div>
-        <button onClick={()=>navigate(-1)}>Back</button>
-        <h2>Blogs on <span>#{category}</span></h2>
+      <div className="-mb-[100px] max-w-2xl mx-auto flex items-center space-x-2 w-11/12">
+        <button className="border-2 border-gray-300 py-1 px-4 rounded-md" onClick={() => navigate(-1)}>🔙</button>
+        <h2 className="font-bold text-xl">
+          Blogs Tagged <span className="underline text-blue-700">#{category}</span>
+        </h2>
       </div>
       <Blogs/>
       <Pagination/>

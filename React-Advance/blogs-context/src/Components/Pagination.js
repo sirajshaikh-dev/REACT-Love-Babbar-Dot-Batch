@@ -5,9 +5,9 @@ function Pagination() {
   const { page, handlePageChange, totalPages } = useContext(AppContext);
 
   return (
-    <div className="fixed bottom-0 py-2 pt-3 bg-white w-11/12 max-w-[450px] flex justify-between items-center">
+    <div className="fixed bottom-0 py-2 px-3 pt-3 bg-white w-11/12 max-w-[450px] flex justify-between items-center">
      
-      <div className="flex space-x-4">
+      <div className="flex space-x-3">
         {page > 1 && ( // Previous button
           <button
             onClick={() => handlePageChange(page - 1)}

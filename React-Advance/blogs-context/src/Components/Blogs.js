@@ -7,21 +7,24 @@ function Blogs() {
   const {posts,loading}= useContext(AppContext)
 
   return (  
-    <div className='w-11/12 max-w-[450px] flex flex-col gap-y-7 mt-[70px]'>
+    <div className="my-[110px]">
+      <div className="w-11/12 max-w-[500px] flex flex-col gap-y-7 mt-[70px]">
       {
         loading 
         ? (<Spinner/> )
         :(
           posts.length===0  
           ?(<div>
-              <p>No data Found</p>  
+              <p className="font-bold text-3xl text-center my-[200px]">No data Found</p>  
             </div>)
           :(posts.map((post)=> (
             <BlogDetails key={post.id} post={post} />
           ) ))
         )
       }
+      </div>
     </div>
+    
   )
 }
 

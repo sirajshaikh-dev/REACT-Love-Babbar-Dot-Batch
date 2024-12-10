@@ -37,10 +37,11 @@ const BlogPage = () => {
   }, [location.pathname]);
 
   return (
-    <div>
+    <div  className="mt-[100px]">
       <Header />
-      <div>
-        <button onClick={() => navigate(-1)}>Back</button>
+      <div className="max-w-[500px] mx-auto flex items-center space-x-2 w-11/12 ">
+        <button className="border-2 border-gray-300 py-1 px-4 rounded-md mb-6"
+         onClick={() => navigate(-1)}>🔙</button>
       </div>
       <div>
         {loading ? (
@@ -48,12 +49,15 @@ const BlogPage = () => {
         ) : blog ? (
           <div>
             <BlogDetails post={blog} />
-            <h2>Releated Blogs</h2>
-            {relatedblog.map((post) => (
-              <div key={post.id}>
-                <BlogDetails post={post} />
-              </div>
+            <h2 className="text-2xl font-bold my-5 px-5 ">Related Blogs </h2>
+            <div className="flex flex-col gap-y-8">
+              {relatedblog.map((post) => (
+                <div key={post.id}>
+                  <BlogDetails post={post} />
+                </div>
             ))}
+            </div>
+            
           </div>
         ) : (
           <p>No Blog Found</p>
