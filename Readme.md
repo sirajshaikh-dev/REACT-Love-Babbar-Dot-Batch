@@ -25,4 +25,6 @@
 
 [Class 01-Random gif Generator - Custom Hooks](./React-Advance/random-gif-generator/README.md)
 
-[Class 02- Blog Website - Context API](./React-Advance/blogs-context/README.md/)
+[Class 02 & 03- Blog Website - Context API](./React-Advance/blogs-context/README.md/)
+
+[Class 04 & 05- Shopping Cart- Redux](./React-Advance/shopping-cart-redux/README.MD)
